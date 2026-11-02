@@ -3,81 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>گالری زیبایی رز | Rose Beauty Gallery</title>
+    <title>گالری زیبایی رز | Rose Beauty Gallery - فروشگاه بزرگ</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- هدر سایت -->
-    <header>
-        <div class="logo">
+    <!-- هدر و نوار بالایی سایت -->
+    <header class="main-header">
+        <div class="logo-area">
             <h1>گالری زیبایی رز</h1>
-            <p>لوکس‌ترین مرجع لوازم آرایشی و بهداشتی</p>
+            <p>بزرگترین مرجع تخصصی لوازم آرایشی و لوکس (بیش از ۱۰۰۰ محصول)</p>
         </div>
+        
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="جستجوی در میان ۶۰۰ محصول لوکس...">
+            <input type="text" id="searchInput" placeholder="جستجوی پیشرفته در میان محصولات...">
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
-        <div class="cart-icon">
+
+        <div class="cart-icon" id="cartBtn">
             <i class="fa-solid fa-bag-shopping"></i>
             <span id="cartCount">0</span>
         </div>
     </header>
 
-    <!-- بخش بنر خوش آمدگویی -->
-    <section class="hero">
-        <div class="hero-content">
-            <h2>زیبایی اصیل با محصولات اورجینال</h2>
-            <p>مجموعه‌ای بی نظیر از برترین برندهای آرایشی جهان</p>
-        </div>
-    </section>
+    <!-- منوی دسته‌بندی‌ها -->
+    <nav class="categories-nav">
+        <button class="cat-btn active" data-category="all">همه محصولات</button>
+        <button class="cat-btn" data-category="makeup">آرایشی لب و صورت</button>
+        <button class="cat-btn" data-category="skincare">مراقبت پوست</button>
+        <button class="cat-btn" data-category="perfume">عطر و ادکلن لوکس</button>
+        <button class="cat-btn" data-category="hair">مراقبت مو</button>
+    </nav>
 
-    <!-- کاتالوگ محصولات -->
+    <!-- بخش نمایش محصولات (گرید با تعداد ستون‌های بالا و جذاب) -->
     <main class="container">
-        <h3 class="section-title">محصولات ویژه و پرفروش</h3>
-        <div class="products-grid" id="productsContainer">
-            <!-- محصولات به صورت نمونه لوکس بارگذاری می‌شوند -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=500&q=80" alt="رژ لب لوکس رز">
-                    <span class="badge">ویژه</span>
-                </div>
-                <div class="product-info">
-                    <h4>رژ لب جامد مخملی کد ۱۵</h4>
-                    <p class="price">۴۸۰,۰۰۰ تومان</p>
-                    <button class="add-to-cart" onclick="addToCart('رژ لب جامد مخملی کد ۱۵')">افزودن به سبد خرید</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=500&q=80" alt="پالت سایه چشم">
-                </div>
-                <div class="product-info">
-                    <h4>پالت سایه چشم شیمر رز</h4>
-                    <p class="price">۱,۲۵۰,۰۰۰ تومان</p>
-                    <button class="add-to-cart" onclick="addToCart('پالت سایه چشم شیمر رز')">افزودن به سبد خرید</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=500&q=80" alt="کرم پودر تخصصی">
-                </div>
-                <div class="product-info">
-                    <h4>کرم پودر ضدآب ماندگار</h4>
-                    <p class="price">۹۵۰,۰۰۰ تومان</p>
-                    <button class="add-to-cart" onclick="addToCart('کرم پودر ضدآب ماندگار')">افزودن به سبد خرید</button>
-                </div>
-            </div>
+        <div class="products-grid" id="productsGrid">
+            <!-- محصولات به صورت خودکار توسط جاوااسکریپت (بیش از ۹۹۹ عدد) اینجا بارگذاری می‌شوند -->
         </div>
     </main>
 
-    <!-- فوتر سایت -->
-    <footer>
-        <p>تمامی حقوق محفوظ است &copy; ۲۰۲۶ | گالری زیبایی رز</p>
-    </footer>
+    <!-- سبد خرید کشویی -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>سبد خرید شما</h3>
+            <i class="fa-solid fa-xmark" id="closeCart"></i>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- محصولات انتخاب شده -->
+        </div>
+        <div class="cart-footer">
+            <div class="total-price">مجموع: <span id="totalPrice">۰</span> تومان</div>
+            <button class="checkout-btn">تکمیل خرید و پرداخت</button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
 
     <script src="script.js"></script>
 </body>
